@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.productList {
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px 100px 190px;
+    font-family: 'Raleway'; 
+}
+
+.productList_container {
+    display: grid;
+    grid-template-columns: repeat(4, 386px);
+    column-gap: calc((100% - 4 * 386px) / 3);
+    row-gap: 103px;
+}
+
+.categoryName {
+    font-weight: 400;
+    font-size: 42px;
+    text-transform: capitalize;
+}
+
+.productCard {
+    height: 444px;
+    padding: 16px;
+}
+
+.productCard__imgContainer {
+    overflow: hidden; 
+    width: 100%; 
+    height: 330px;
+    margin-bottom: 24px;
+}
+
+.productCard__preview {
+    width: 100%;
+}
+
+.productCard__name {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.productCard__price {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28.8px;
+}

@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a, a:hover, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    margin: 0 auto;
+    padding: 0 100px;
+}
+
+nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Raleway'; 
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.navList {
+    height: 100%;
+    list-style-type: none;
+    display: flex;
+    width: 50%;
+}
+
+ul.navList:nth-of-type(2) {
+    justify-content: flex-end;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.navList li {
+    display: flex;
+    align-items: center;
+    padding: 0 1em; 
+    height: 100%;
+    text-transform: uppercase;
+}
+
+.navList li:hover, .navList li.active {
+    border-bottom: 2px solid #5ECE7B;
+    color: #5ECE7B;
+    font-weight: 600;
+    cursor: pointer;
+}
+
