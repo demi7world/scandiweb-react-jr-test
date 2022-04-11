@@ -10,7 +10,7 @@ import ProductList from '../ProductList/ProductList';
 const errorLink = onError(({graphqlErrors}) => {
 	if (graphqlErrors) {
 		graphqlErrors.map(({message}) => {
-		alert(`Graphql error ${message}`)
+		return alert(`Graphql error ${message}`)
 		});
 	}
 });
@@ -30,21 +30,37 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			category: 'all'
+			category: 'all',
+			currency: {
+				label: 'USD',
+				symbol: '$'
+			}
 		}
 	}
 
-	onChooseCategory = (category) => {
+	onChangeCategory = (category) => {
 		this.setState({category});
+	}
+
+	onChangeCurrency = (label, symbol) => {
+		this.setState({
+			currency: {
+				label,
+				symbol
+			}
+		});
 	}
 
 	render() {
 		return (
 		<ApolloProvider client={client}>
 			<AppHeader 
-				onChooseCategory={this.onChooseCategory}
-				activeCategory={this.state.category} />
-			<ProductList activeCategory={this.state.category} />
+				onChangeCategory={this.onChangeCategory}
+				activeCategory={this.state.category}
+				onChangeCurrency={this.onChangeCurrency}
+				activeCurrency={this.state.currency.symbol} />
+			<ProductList activeCategory={this.state.category}
+				currencyLabel={this.state.currency.label} />
 		</ApolloProvider>
 		);
 	}

@@ -33,10 +33,18 @@ nav {
     width: 50%;
 }
 
-ul.navList:nth-of-type(2) {
+.navBlock {
+    height: 100%;
+    display: flex;
+    width: 50%;
     justify-content: flex-end;
-    font-size: 18px;
-    font-weight: 500;
+}
+
+.navBlock__container {
+    display: flex;
+    align-items: center;
+    padding: 0 1em; 
+    height: 100%;
 }
 
 .navList li {

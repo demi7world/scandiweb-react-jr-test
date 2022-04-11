@@ -3,19 +3,20 @@ import { Component } from 'react';
 import { Query } from '@apollo/client/react/components';
 import { LOAD_CATEGORIES } from '../../Graphql/Queries';
 
+import CurrencyDropdown from '../CurrencyDropdown/CurrencyDropdown';
+
 import './appHeader.css';
 import logo from '../../Resources/Img/logo.svg';
 import cart from '../../Resources/Img/cart.svg';
 
 export default class AppHeader extends Component {
 
-	onChooseCategory = (e) => {
+	onChangeCategory = (e) => {
         const category = e.target.getAttribute('data-active');
-        this.props.onChooseCategory(category);
+        this.props.onChangeCategory(category);
     }
 
 	render() {
-
 		return (
 		<header>
 			<nav>
@@ -35,7 +36,7 @@ export default class AppHeader extends Component {
 										<li 
 											key={categories.indexOf(category)} 
 											data-active={category.name}
-											onClick={this.onChooseCategory}
+											onClick={this.onChangeCategory}
 											className="active">
 											{category.name}
 										</li>
@@ -45,7 +46,7 @@ export default class AppHeader extends Component {
 										<li 
 											key={categories.indexOf(category)} 
 											data-active={category.name}
-											onClick={this.onChooseCategory}>
+											onClick={this.onChangeCategory}>
 											{category.name}
 										</li>
 									)
@@ -56,10 +57,14 @@ export default class AppHeader extends Component {
 					</Query>
 				</ul>
 				<img src={logo} alt="logo" className="logo" />
-				<ul className="navList">
-					<li>$</li>
-					<li><img src={cart} alt="cart" /></li>
-				</ul>
+				<div className="navBlock">
+					<CurrencyDropdown 
+						onChangeCurrency={this.props.onChangeCurrency}
+						activeCurrency={this.props.activeCurrency} />
+					<div className="navBlock__container">
+						<img src={cart} alt="cart" />
+					</div>
+				</div>
 			</nav>
 		</header>
 		)

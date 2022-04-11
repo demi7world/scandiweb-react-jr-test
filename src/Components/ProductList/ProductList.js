@@ -8,6 +8,7 @@ import './productList.css';
 export default class ProductList extends Component {
 
 	render() {
+
 		const title = this.props.activeCategory;
 		
 		return (
@@ -25,19 +26,20 @@ export default class ProductList extends Component {
 							<>
 								<h1 className="categoryName">{category.name}</h1>
 								<div className="productList_container">
-									{
-									products.map(product => {
+									{products.map(product => {
+
+										const price = product.prices.find(price => price.currency.label === this.props.currencyLabel);
+
 										return (
 											<article key={product.id} className="productCard">
 												<div className="productCard__imgContainer">
 													<img className="productCard__preview" src={product.gallery[0]} alt={product.name} />
 												</div>
 												<h1 className="productCard__name">{product.name}</h1>
-												<p className="productCard__price">$50.00</p>
+												<p className="productCard__price">{price.currency.symbol}{price.amount}</p>
 											</article>
 										);
-									})
-									}
+									})}
 								</div>
 							</>
 						);

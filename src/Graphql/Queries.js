@@ -34,3 +34,12 @@ export const LOAD_PRODUCTS_BY_CATEGORY = gql`
         }
     }
 `;
+
+export const LOAD_CURRENCIES = gql`
+    query {
+        currencies {
+        label,
+        symbol
+        }
+    }
+`;
