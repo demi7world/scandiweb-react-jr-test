@@ -63,7 +63,7 @@ class CurrencyDropdown extends Component {
 
                     return (
                         <div className="dropdown">
-                            <div 
+                            <button 
                                 className="dropdown__logoContainer"
                                 ref={this.getDropdownBtn}
                                 onClick={this.onClickDropdownBtn}>
@@ -71,11 +71,10 @@ class CurrencyDropdown extends Component {
                                 <div 
                                     className="dropdown__arrow"
                                     ref={this.getDropdownArrow} />
-                            </div>
+                            </button>
                             <ul 
                                 className="dropdown__menu" 
-                                ref={this.getDropdownMenu}
-                                >
+                                ref={this.getDropdownMenu}>
                                 {currencies.map(currency => {
                                     return (
                                         <li 

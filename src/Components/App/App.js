@@ -7,6 +7,10 @@ import AppHeader from '../AppHeader/AppHeader';
 import ProductList from '../ProductList/ProductList';
 
 
+import './app.css';
+import '../../Resources/Fonts/fonts.css';
+
+
 const errorLink = onError(({graphqlErrors}) => {
 	if (graphqlErrors) {
 		graphqlErrors.map(({message}) => {
@@ -27,14 +31,15 @@ const client = new ApolloClient({
 
 class App extends Component {
 
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
 			category: 'all',
 			currency: {
 				label: 'USD',
 				symbol: '$'
-			}
+			},
+			cart: {}
 		}
 	}
 
@@ -51,16 +56,49 @@ class App extends Component {
 		});
 	}
 
+	onAddToCart = (productId, number) => {
+		const cart = this.state.cart;
+
+		const newCart = {};
+		newCart[`${productId}`] = number;
+
+		this.setState({
+			cart: {
+				...cart,
+				...newCart
+			}
+		});
+	}
+
+	// onRemoveFromCart = (productId) => {
+	// 	const cart = this.state.cart,
+	// 		  index = cart.indexOf(productId);
+
+	// 	console.log(productId);
+		
+	// 	if (index !== -1) {
+	// 		const newCart = cart.splice(index, 1);
+	// 		this.setState({
+	// 			cart: newCart
+	// 		});
+	// 	}
+	// }
+
 	render() {
 		return (
 		<ApolloProvider client={client}>
-			<AppHeader 
-				onChangeCategory={this.onChangeCategory}
-				activeCategory={this.state.category}
-				onChangeCurrency={this.onChangeCurrency}
-				activeCurrency={this.state.currency.symbol} />
-			<ProductList activeCategory={this.state.category}
-				currencyLabel={this.state.currency.label} />
+			<div className="app">
+				<AppHeader 
+					onChangeCategory={this.onChangeCategory}
+					activeCategory={this.state.category}
+					onChangeCurrency={this.onChangeCurrency}
+					activeCurrency={this.state.currency.symbol} />
+				<ProductList 
+					activeCategory={this.state.category}
+					currencyLabel={this.state.currency.label} 
+					onAddToCart={this.onAddToCart}
+					cart={this.state.cart} />
+			</div>
 		</ApolloProvider>
 		);
 	}

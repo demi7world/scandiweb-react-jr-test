@@ -1,15 +1,8 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .dropdown {
     display: flex;
     align-items: center;
     font-size: 18px;
     font-weight: 500;
-    cursor: pointer;
 }
 
 .dropdown__arrow {
@@ -42,6 +35,11 @@
     flex-direction: column;
     gap: 20px;
     list-style-type: none;
+    z-index: 100;
+}
+
+.dropdown__menu li {
+    cursor: pointer;
 }
 
 .dropdown__menu.active {
@@ -53,6 +51,11 @@
     padding: 0 16px;
     display: flex;
     align-items: center;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background: none;
+    border: none;
 }
 
 .dropdown__logo:hover, .dropdown__menu li:hover {

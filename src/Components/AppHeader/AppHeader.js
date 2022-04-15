@@ -4,10 +4,10 @@ import { Query } from '@apollo/client/react/components';
 import { LOAD_CATEGORIES } from '../../Graphql/Queries';
 
 import CurrencyDropdown from '../CurrencyDropdown/CurrencyDropdown';
+import CartDropdown from '../CartDropdown/CartDropdown';
 
 import './appHeader.css';
 import logo from '../../Resources/Img/logo.svg';
-import cart from '../../Resources/Img/cart.svg';
 
 export default class AppHeader extends Component {
 
@@ -61,9 +61,7 @@ export default class AppHeader extends Component {
 					<CurrencyDropdown 
 						onChangeCurrency={this.props.onChangeCurrency}
 						activeCurrency={this.props.activeCurrency} />
-					<div className="navBlock__container">
-						<img src={cart} alt="cart" />
-					</div>
+					<CartDropdown />
 				</div>
 			</nav>
 		</header>
